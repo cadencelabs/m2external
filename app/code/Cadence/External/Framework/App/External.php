@@ -133,8 +133,8 @@ class External implements \Magento\Framework\AppInterface
     public function launch(array $initParams = [])
     {
         $this->_state->setAreaCode('frontend');
+        $this->_objectManager->get('\Magento\Framework\View\DesignLoader')->load(\Magento\Framework\App\Area::PART_TRANSLATE);
         $this->_objectManager->configure($this->_configLoader->load('frontend'));
-
         $this->_eventManager->dispatch('cadence_wp_external_app_launch', [
             'app' => $this,
             'request' => $this->_request
